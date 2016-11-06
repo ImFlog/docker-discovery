@@ -1,0 +1,1 @@
+exec "java -jar /usr/share/client-0.0.1-SNAPSHOT.jar"
