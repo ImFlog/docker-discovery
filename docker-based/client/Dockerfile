@@ -1,9 +1,8 @@
 FROM java:8-jre-alpine
 
-COPY ./service-entrypoint.sh /
+COPY ./docker-based/client/service-entrypoint.sh /
 RUN chmod +x /service-entrypoint.sh
 
-# MUST BE IN CONTEXT PATH SO DOCKERFILE HAS TO BE MOVED TO PROJECT FOLDER
-# COPY ../java-based/client/target/client-0.0.1-SNAPSHOT.jar /usr/share/
+COPY ./java-based/client/target/client-0.0.1-SNAPSHOT.jar /usr/share/
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/service-entrypoint.sh"]
