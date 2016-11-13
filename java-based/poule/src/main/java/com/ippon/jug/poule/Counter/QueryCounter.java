@@ -25,6 +25,10 @@ public class QueryCounter {
         qps.put(currentDate, count);
     }
 
+    public void purgeOlderQpsValues() {
+        // TODO : Implémenter la méthode pour ne conserver que les 600 derniers points (10mn)
+    }
+
     public Map<String, Integer> getQps() {
         return qps;
     }
