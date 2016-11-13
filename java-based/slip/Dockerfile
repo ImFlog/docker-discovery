@@ -7,4 +7,4 @@ COPY ./target/slip-0.0.1-SNAPSHOT.jar /usr/share/
 
 EXPOSE 8080
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT "/docker-entrypoint.sh"
