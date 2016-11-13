@@ -6,10 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PreDestroy;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 @Component
 public class PouleManager implements CommandLineRunner {
@@ -29,27 +27,27 @@ public class PouleManager implements CommandLineRunner {
         threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(THREAD_POOL_SIZE);
     }
 
-    // TODO : clean the thread management
     @Override
     public void run(String... strings) throws Exception {
-        while (true) {
-            try {
-                if (threadPoolExecutor.getActiveCount() < 10) {
-                    threadPoolExecutor.execute(() -> {
+        for (int i = 0; i < THREAD_POOL_SIZE; i++) {
+            logger.info("Starting thread executors {}", i);
+            threadPoolExecutor.execute(() -> {
+                while (true) {
+                    try {
                         String s = slipClient.getRequest();
                         // We increment the counter after feign call.
                         qpsCounter.addQuery();
-                    });
+                    } catch (Exception e) {
+                        logger.error(e.getMessage(), e);
+                    }
                 }
-            } catch (Exception e) {
-                logger.error(e.getMessage(), e);
-            }
+            });
         }
-
+        logger.info("All threads started");
     }
 
     @PreDestroy
-    public void killThreadPool() {
+    public void killExecutor() {
         threadPoolExecutor.shutdown();
     }
 }

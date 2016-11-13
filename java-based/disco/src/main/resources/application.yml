@@ -1,7 +1,6 @@
-spring.application.name: disco
+server.port: 8761
 
-server:
-  port: 8761
+spring.application.name: disco
 
 eureka:
   instance:
