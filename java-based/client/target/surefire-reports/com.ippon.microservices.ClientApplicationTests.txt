@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ippon.microservices.ClientApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.758 sec - in com.ippon.microservices.ClientApplicationTests

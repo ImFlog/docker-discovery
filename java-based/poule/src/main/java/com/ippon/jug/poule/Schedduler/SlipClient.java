@@ -1,4 +1,4 @@
-package com.ippon.jug.poule;
+package com.ippon.jug.poule.Schedduler;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
