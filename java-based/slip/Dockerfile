@@ -1,4 +1,4 @@
-FROM java:8-jre-alpine
+FROM java:8-jre
 
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
