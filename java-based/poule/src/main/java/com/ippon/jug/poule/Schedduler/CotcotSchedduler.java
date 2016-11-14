@@ -19,7 +19,7 @@ public class CotcotSchedduler {
 
     private static final int THREAD_POOL_SIZE = 10;
 
-    ThreadPoolExecutor threadPoolExecutor;
+    private ThreadPoolExecutor threadPoolExecutor;
     private QueryCounter queryCounter;
     private SlipClient slipClient;
 
@@ -33,7 +33,7 @@ public class CotcotSchedduler {
 
     @Scheduled(fixedDelay = 100)
     public void fillQueue(){
-        while (threadPoolExecutor.getQueue().size() < THREAD_POOL_SIZE){
+        while (threadPoolExecutor.getActiveCount() < THREAD_POOL_SIZE){
             threadPoolExecutor.execute(new CotCotWorker(queryCounter, slipClient));
         }
     }

@@ -12,9 +12,9 @@ public class SlipController {
         return "Spring and Spring cloud are Awesome !!";
     }
 
-    private static final int SECOND = 100;
+    private static final int SLEEP_MILLIS = 100;
 
     private synchronized void doSlip() throws InterruptedException {
-        Thread.sleep(SECOND);
+        Thread.sleep(SLEEP_MILLIS);
     }
 }

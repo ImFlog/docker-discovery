@@ -17,7 +17,9 @@ public class CotCotWorker implements Runnable {
 
     @Override
     public void run() {
-        slipClient.getRequest();
-        queryCounter.addQuery();
+        String s = slipClient.getRequest();
+        if (s != null) {
+            queryCounter.addQuery();
+        }
     }
 }
