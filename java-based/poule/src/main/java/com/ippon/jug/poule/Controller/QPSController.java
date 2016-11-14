@@ -19,13 +19,11 @@ public class QPSController {
 
     @RequestMapping(value = "/qps")
     public Map<String, Integer> getMeanQps() {
-
-        // float elapsedTime = (System.currentTimeMillis() - startTime) / 1000F;
-        // Map<String, Object> result = new HashMap<>();
-        // result.put("count", queryCount);
-        // result.put("elapsedTime", elapsedTime);
-        // result.put("qps", queryCount / elapsedTime);
-
         return queryCounter.getQps();
+    }
+
+    @RequestMapping(value = "/qpsSinceStarted")
+    public Float getMeanQpsSinceStarted() {
+        return queryCounter.getQpsSinceStarted();
     }
 }
