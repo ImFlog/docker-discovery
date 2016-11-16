@@ -26,4 +26,9 @@ public class QPSController {
     public Float getMeanQpsSinceStarted() {
         return queryCounter.getQpsSinceStarted();
     }
+
+    @RequestMapping(value = "/lastSecQps")
+    public Integer getLastSecQps() {
+        return queryCounter.getLastSecCount();
+    }
 }

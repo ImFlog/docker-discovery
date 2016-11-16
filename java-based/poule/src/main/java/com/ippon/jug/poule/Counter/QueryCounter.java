@@ -12,7 +12,7 @@ import java.util.*;
 @Component
 public class QueryCounter {
     private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-    private Map<String, Integer> qps = new TreeMap<String, Integer>();
+    private NavigableMap<String, Integer> qps = new TreeMap<>();
 
     private Long startTime;
     private int totalCount;
@@ -42,6 +42,15 @@ public class QueryCounter {
 
     public Map<String, Integer> getQps() {
         return qps;
+    }
+
+    public Integer getLastSecCount() {
+        Map.Entry<String, Integer> lastEntry = qps.lastEntry();
+        if (lastEntry != null) {
+            return lastEntry.getValue();
+        } else {
+            return 0;
+        }
     }
 
     public Float getQpsSinceStarted() {
