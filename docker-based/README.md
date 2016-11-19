@@ -12,3 +12,6 @@ To build the images use the following maven command : `mvn package docker:build`
 3. exec `sudo docker run -d --name=slip --network=my_network slip:latest`
 4. exec `sudo docker run -d -p 8080:8080 --name=poule --network=my_network poule:latest`
 5. go to [http://localhost:8080/]() to get the query graph
+
+### Using compose
+`docker-compose up -d`
