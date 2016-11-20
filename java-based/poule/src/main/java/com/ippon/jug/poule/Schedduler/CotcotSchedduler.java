@@ -38,11 +38,6 @@ public class CotcotSchedduler {
         }
     }
 
-    @Scheduled(fixedDelay = 1000)
-    public void cleanQpsValues() {
-        queryCounter.purgeOlderQpsValues();
-    }
-
     @PreDestroy
     public void killExecutor() {
         if (threadPoolExecutor != null) {

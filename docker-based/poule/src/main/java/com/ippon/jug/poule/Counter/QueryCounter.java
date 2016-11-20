@@ -12,7 +12,9 @@ import java.util.*;
 @Component
 public class QueryCounter {
     private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+    private static Integer NB_ELEMENTS_IN_QUEUE = 600;
     private NavigableMap<String, Integer> qps = new TreeMap<>();
+    private Map.Entry<String, Integer> currentCounter;
 
     private Long startTime;
     private int totalCount;
@@ -20,27 +22,33 @@ public class QueryCounter {
     @PostConstruct
     private void initTimer(){
         startTime = Calendar.getInstance().getTimeInMillis();
+        currentCounter = new AbstractMap.SimpleEntry<>(formatter.format(Calendar.getInstance().getTime()), 0);
     }
 
     public void addQuery() {
         String currentDate = formatter.format(Calendar.getInstance().getTime());
-        Integer count;
 
-        if(qps.containsKey(currentDate)) {
-            count = qps.get(currentDate) + 1;
+        if (currentCounter.getKey().equals(currentDate)) {
+            currentCounter.setValue(currentCounter.getValue() + 1);
         } else {
-            count = 1;
+            qps.put(currentCounter.getKey(), currentCounter.getValue());
+            currentCounter = new AbstractMap.SimpleEntry<>(currentDate, 1);
+            purgeOlderQpsValues();
         }
-        qps.put(currentDate, count);
 
         totalCount++;
+    }
+
+    private void purgeOlderQpsValues() {
+        if(qps.size() > NB_ELEMENTS_IN_QUEUE){
+            qps.remove(qps.firstKey());
+        }
     }
 
     public Map<String, Integer> getQps() {
         return qps;
     }
 
-    // TODO: Retourner avant dernière clé
     public Integer getLastSecCount() {
         Map.Entry<String, Integer> lastEntry = qps.lastEntry();
         if (lastEntry != null) {

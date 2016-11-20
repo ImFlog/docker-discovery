@@ -13,6 +13,7 @@ import java.util.*;
 @Component
 public class QueryCounter {
     private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+    private static Integer NB_ELEMENTS_IN_QUEUE = 600;
     private NavigableMap<String, Integer> qps = new TreeMap<>();
     private Map.Entry<String, Integer> currentCounter;
 
@@ -34,13 +35,16 @@ public class QueryCounter {
         } else {
             qps.put(currentCounter.getKey(), currentCounter.getValue());
             currentCounter = new AbstractMap.SimpleEntry<>(currentDate, 1);
+            purgeOlderQpsValues();
         }
 
         totalCount++;
     }
 
-    public void purgeOlderQpsValues() {
-        // TODO : Implémenter la méthode pour ne conserver que les 600 derniers points (10mn)
+    private void purgeOlderQpsValues() {
+        if(qps.size() > NB_ELEMENTS_IN_QUEUE){
+            qps.remove(qps.firstKey());
+        }
     }
 
     public Map<String, Integer> getQps() {
