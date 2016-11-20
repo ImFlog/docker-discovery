@@ -1,5 +1,6 @@
 package com.ippon.jug.poule.Counter;
 
+import javafx.util.Pair;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,25 +14,27 @@ import java.util.*;
 public class QueryCounter {
     private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
     private NavigableMap<String, Integer> qps = new TreeMap<>();
+    private Map.Entry<String, Integer> currentCounter;
 
     private Long startTime;
     private int totalCount;
 
     @PostConstruct
     private void initTimer(){
+
         startTime = Calendar.getInstance().getTimeInMillis();
+        currentCounter = new AbstractMap.SimpleEntry<>(formatter.format(Calendar.getInstance().getTime()), 0);
     }
 
     public void addQuery() {
         String currentDate = formatter.format(Calendar.getInstance().getTime());
-        Integer count;
 
-        if(qps.containsKey(currentDate)) {
-            count = qps.get(currentDate) + 1;
+        if (currentCounter.getKey().equals(currentDate)) {
+            currentCounter.setValue(currentCounter.getValue() + 1);
         } else {
-            count = 1;
+            qps.put(currentCounter.getKey(), currentCounter.getValue());
+            currentCounter = new AbstractMap.SimpleEntry<>(currentDate, 1);
         }
-        qps.put(currentDate, count);
 
         totalCount++;
     }
