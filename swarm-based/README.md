@@ -1,4 +1,5 @@
-Docker : Build, Ship and Run
+Docker : Build, Ship and Run  
+Describe how to create a Swarm cluster to scale on multiple servers our services
 
 Once your images have been builded (see the docker base directory) you have to push them on a public registry.  
 1. exec `sudo docker tag slip:latest <username>/slip:latest`  
