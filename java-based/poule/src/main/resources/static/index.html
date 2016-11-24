@@ -62,7 +62,7 @@ graph.render();
 var iv = setInterval( function() {
 
     $.ajax({
-        url: "http://localhost:8080/lastSecQps",
+        url: "/lastSecQps",
         success:function(data) {
             graph.series.addData({one: data});
             graph.render();
