@@ -3,13 +3,16 @@ package com.ippon.jug.poule;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RestController
 public class SlipController {
 
     @RequestMapping(value = "/request")
-    public String getRequest() throws InterruptedException {
+    public String getRequest() throws InterruptedException, UnknownHostException {
         this.doSlip();
-        return "Spring and Spring cloud are Awesome !!";
+        return "Hello I'm " + InetAddress.getLocalHost().getHostName();
     }
 
     private static final int SLEEP_MILLIS = 100;
