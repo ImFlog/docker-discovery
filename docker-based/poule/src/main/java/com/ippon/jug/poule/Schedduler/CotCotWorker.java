@@ -20,6 +20,7 @@ public class CotCotWorker implements Runnable {
         String s = slipClient.getRequest();
         if (s != null) {
             queryCounter.addQuery();
+            queryCounter.getHostMap().putIfAbsent(s, s);
         }
     }
 }

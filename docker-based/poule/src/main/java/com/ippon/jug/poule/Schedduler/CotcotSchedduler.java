@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @EnableScheduling
 public class CotcotSchedduler {
 
-    private static final int THREAD_POOL_SIZE = 10;
+    private static final int THREAD_POOL_SIZE = 2;
 
     private ThreadPoolExecutor threadPoolExecutor;
     private QueryCounter queryCounter;

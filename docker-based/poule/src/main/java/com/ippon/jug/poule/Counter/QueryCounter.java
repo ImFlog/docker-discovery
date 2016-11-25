@@ -4,7 +4,12 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.Calendar;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by jmonsinjon on 13/11/16.
@@ -18,9 +23,10 @@ public class QueryCounter {
 
     private Long startTime;
     private int totalCount;
+    private ConcurrentHashMap<String, String> hostMap = new ConcurrentHashMap<>();
 
     @PostConstruct
-    private void initTimer(){
+    private void initTimer() {
         startTime = Calendar.getInstance().getTimeInMillis();
         currentCounter = new AbstractMap.SimpleEntry<>(formatter.format(Calendar.getInstance().getTime()), 0);
     }
@@ -40,7 +46,7 @@ public class QueryCounter {
     }
 
     private void purgeOlderQpsValues() {
-        if(qps.size() > NB_ELEMENTS_IN_QUEUE){
+        if (qps.size() > NB_ELEMENTS_IN_QUEUE) {
             qps.remove(qps.firstKey());
         }
     }
@@ -60,5 +66,9 @@ public class QueryCounter {
 
     public Float getQpsSinceStarted() {
         return (totalCount / ((Calendar.getInstance().getTimeInMillis() - startTime) / 1000F));
+    }
+
+    public ConcurrentHashMap<String, String> getHostMap() {
+        return hostMap;
     }
 }
