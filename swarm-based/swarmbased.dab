@@ -1,0 +1,23 @@
+{
+  "Services": {
+    "poule": {
+      "Image": "jmonsinjon/poule@sha256:7232e687d458f44db2122fbfef3013c77ba351d8091d6f1c3b2a53d2ef98d872", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 8080, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "slip": {
+      "Image": "jmonsinjon/slip@sha256:532a7068def9fe3ece8ccf785e07032da03fc1cc366f554eba6932cb54817a8f", 
+      "Networks": [
+        "default"
+      ]
+    }
+  }, 
+  "Version": "0.1"
+}
