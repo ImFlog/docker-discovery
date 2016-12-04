@@ -36,3 +36,10 @@ With Docker swarm, no need an external KV store for a Docker overlay network
 1. Connect to the swarm leader server (ssh)  
 2. exec `sudo docker service rm poule`  
 3. exec `sudo docker service rm slip`  
+
+### Use stack tools
+1. You can rebuild the .dab file with `docker-compose bundle`
+2. Copy the generated .dab file to you swarm leader
+2. Deploy your stack with `docker deploy --bundle-file swarmbased.dab test`
+3. Use `docker stack services test` to see your running services
+4. Delete the stack with `docker stack rm test`
