@@ -1,4 +1,4 @@
-package com.ippon.jug.poule;
+package com.ippon.jug.slip;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
