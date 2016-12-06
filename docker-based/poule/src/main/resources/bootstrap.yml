@@ -4,3 +4,4 @@ spring.application.name: poule
 
 feign.hystrix.enabled: false
 ribbon.ReadTimeout: 6000
+ribbon.PoolKeepAliveTime: 10
