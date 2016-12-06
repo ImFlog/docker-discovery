@@ -21,20 +21,18 @@ public class CotcotSchedduler {
 
     private ThreadPoolExecutor threadPoolExecutor;
     private QueryCounter queryCounter;
-    private SlipClient slipClient;
 
 
     @Autowired
-    public CotcotSchedduler(QueryCounter queryCounter, SlipClient slipClient) {
+    public CotcotSchedduler(QueryCounter queryCounter) {
         this.queryCounter = queryCounter;
-        this.slipClient = slipClient;
         threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(THREAD_POOL_SIZE);
     }
 
     @Scheduled(fixedDelay = 100)
     public void fillQueue(){
         while (threadPoolExecutor.getActiveCount() < THREAD_POOL_SIZE){
-            threadPoolExecutor.execute(new CotCotWorker(queryCounter, slipClient));
+            threadPoolExecutor.execute(new CotCotWorker(queryCounter));
         }
     }
 
