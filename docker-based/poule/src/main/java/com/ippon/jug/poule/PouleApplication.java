@@ -9,7 +9,6 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 public class PouleApplication {
 
     public static void main(String[] args) {
-        System.setProperty("networkaddress.cache.ttl", "5");
         SpringApplication.run(PouleApplication.class, args);
     }
 }

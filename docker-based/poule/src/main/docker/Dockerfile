@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM openjdk:8-alpine
 
 ADD poule-0.0.1-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
