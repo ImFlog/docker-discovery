@@ -1,10 +1,4 @@
-# docker-discovery
+This directory contains the spring cloud version of our app.
+To build the jar use the maven command : `mvn package` on each application (disco, poule, slip)
 
-This repository explores various discovery technics for microservices architectures using Spring Cloud or Docker tools.
-
-The used application is composed of two services:
-* Slip : Has a synchronized endpoint which only sleep for 100ms.
-* Poule : Continously call Slip and graph the speed.
-
-The idea is that a contention exists in the Slip service, we need to introduce disovery mecanisms to allow us to scale
-and improve our speed.
+THen just launch each jar and go to [http://localhost:8080/]() to see the qps graph.
