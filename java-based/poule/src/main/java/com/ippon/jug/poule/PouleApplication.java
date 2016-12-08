@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 public class PouleApplication {
 
     public static void main(String[] args) {
+		System.setProperty("http.keepAlive", "false");
         SpringApplication.run(PouleApplication.class, args);
     }
 }
-
