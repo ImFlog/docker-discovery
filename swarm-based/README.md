@@ -2,10 +2,10 @@ Docker : Build, Ship and Run
 Describe how to create a Swarm cluster to scale on multiple servers our services
 
 Once your images have been builded (see the docker base directory) you have to push them on a public registry.  
-1. exec `sudo docker tag slip:latest <username>/slip:latest`  
-2. exec `sudo docker push <username>/slip:latest`  
-3. exec `sudo docker tag poule:latest <username>/poule:latest`  
-4. exec `sudo docker push <username>/poule:latest`  
+1. exec `sudo docker image tag slip:latest <username>/slip:latest`  
+2. exec `sudo docker image push <username>/slip:latest`  
+3. exec `sudo docker image tag poule:latest <username>/poule:latest`  
+4. exec `sudo docker image push <username>/poule:latest`  
 
 For the next steps, you need multiple servers that can communicate with each other
 ### Swarm cluster creation
@@ -38,8 +38,7 @@ With Docker swarm, no need an external KV store for a Docker overlay network
 3. exec `sudo docker service rm slip`  
 
 ### Use stack tools
-1. You can rebuild the .dab file with `docker-compose bundle`
-2. Copy the generated .dab file to you swarm leader
-2. Deploy your stack with `docker deploy --bundle-file swarmbased.dab test`
+1. Copy the stack.yml file to you swarm leader
+2. Deploy your stack with `docker stack deploy --compose-file stack.yml test`
 3. Use `docker stack services test` to see your running services
 4. Delete the stack with `docker stack rm test`
