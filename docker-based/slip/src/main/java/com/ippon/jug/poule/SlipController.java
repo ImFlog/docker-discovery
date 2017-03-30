@@ -20,4 +20,11 @@ public class SlipController {
     private synchronized void doSlip() throws InterruptedException {
         Thread.sleep(SLEEP_MILLIS);
     }
+
+    @RequestMapping(value = "/dockerHealth")
+    public int getHealth() {
+        // 0 = OK
+        // 1 = KO
+        return 0;
+    }
 }
