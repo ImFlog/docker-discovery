@@ -2,7 +2,7 @@ version: "3"
 
 services:
   slip:
-    image: jmonsinjon/slip:latest
+    image: ippontrain/slip:v0.0.1
     # Do no expose external port (we don't care accessing it from the outside)
     deploy:
         replicas: 2
@@ -11,6 +11,6 @@ services:
             delay: 5s
 
   poule:
-    image: jmonsinjon/poule:latest
+    image: ippontrain/poule:v0.0.1
     ports:
       - "8080:8080"
