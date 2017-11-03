@@ -18,6 +18,7 @@ hs_err_pid*
 *.iml
 .Idea/*
 *.idea
+*/*.idea
 # Mac file
 .DS_STORE
 
