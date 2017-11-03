@@ -1,0 +1,6 @@
+server.port: 8080
+
+spring.application.name: slip
+
+feign.hystrix.enabled: false
+ribbon.ReadTimeout: 6000

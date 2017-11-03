@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../services/poule/poule.iml" filepath="$PROJECT_DIR$/../services/poule/poule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../services/slip/slip.iml" filepath="$PROJECT_DIR$/../services/slip/slip.iml" />
+    </modules>
+  </component>
+</project>
