@@ -25,6 +25,6 @@ public class SlipController {
 
     @RequestMapping(value = "/dockerHealth")
     public ResponseEntity<Void> getHealth() {
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
