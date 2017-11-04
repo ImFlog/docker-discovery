@@ -22,4 +22,9 @@ public class SlipController {
     private synchronized void doSlip() throws InterruptedException {
         Thread.sleep(SLEEP_MILLIS);
     }
+
+    @RequestMapping(value = "/dockerHealth")
+    public ResponseEntity<Void> getHealth() {
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

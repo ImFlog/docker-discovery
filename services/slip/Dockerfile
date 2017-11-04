@@ -10,3 +10,7 @@ WORKDIR /root/
 COPY --from=BUILD_IMAGE /root/dev/slip/target/slip-1.jar .
 EXPOSE 8080
 CMD ["java","-jar","slip-1.jar"]
+
+# HEALTHCHECK
+HEALTHCHECK --start-period=5s --interval=3s --retries=3 \
+CMD /usr/bin/curl -fs http://localhost:8080/dockerHealth || exit 1
